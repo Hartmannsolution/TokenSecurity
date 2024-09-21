@@ -28,6 +28,16 @@ public class UserDTO {
         return Objects.equals(username, dto.username) && Objects.equals(roles, dto.roles);
     }
 
+    public UserDTO(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
+
+    public UserDTO(String username, Set<String> roles) {
+        this.username = username;
+        this.roles = roles;
+    }
+
     @Override
     public int hashCode() {
         return Objects.hash(username, roles);
