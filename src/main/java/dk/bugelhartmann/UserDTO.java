@@ -17,6 +17,7 @@ import java.util.Set;
 @Builder
 public class UserDTO {
     private String username;
+    private String password;
     Set<String> roles = new HashSet<>();
 
     @Override
