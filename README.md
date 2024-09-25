@@ -17,3 +17,20 @@
     - String password;
     - Set<String> roles;
 
+## JitPack
+0. Go to Github repository and create a release. Tagname and release name should be the same (1.0.0)
+1. Go to [JitPack](https://jitpack.io/)
+2. Login with your github account
+3. CI -> Get started -> Find repository -> Hartmannsolution/TokenSecurity -> Settings -> Set `Maven`, `JDK version` and `Build version` -> Save
+4. Go back to jitpack.io and click `Get it` -> Copy the dependency
+5. Add the dependency to your project's pom.xml togethr with the repository tag:
+```xml
+	<repositories>
+		<repository>
+		    <id>jitpack.io</id>
+		    <url>https://jitpack.io</url>
+		</repository>
+	</repositories>
+```
+6. Run `mvn clean install` to get the dependency from JitPack into your project
+
