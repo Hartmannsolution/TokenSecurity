@@ -69,7 +69,7 @@ class ITokenSecurityTest {
     void tokenIsValid() {
         try {
             assertTrue(instance.tokenIsValid(token, secret));
-        } catch(ParseException | JOSEException ex){
+        } catch(ParseException | TokenVerificationException ex){
             ex.printStackTrace();
         }
     }

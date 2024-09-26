@@ -1,5 +1,6 @@
 package dk.bugelhartmann;
 
+
 import com.nimbusds.jose.*;
 import com.nimbusds.jose.crypto.MACSigner;
 import com.nimbusds.jose.crypto.MACVerifier;
@@ -31,9 +32,15 @@ public class TokenSecurity implements ITokenSecurity {
         return new UserDTO(username, rolesSet);
     }
     @Override
-    public boolean tokenIsValid(String token, String secret) throws ParseException, JOSEException{
-        SignedJWT jwt = SignedJWT.parse(token);
-        if (jwt.verify(new MACVerifier(secret)))
+    public boolean tokenIsValid(String token, String secret) throws ParseException, TokenVerificationException {
+        boolean verified = false;
+        try {
+            SignedJWT jwt = SignedJWT.parse(token);
+            verified = jwt.verify(new MACVerifier(secret));
+        } catch (JOSEException e) {
+            throw new TokenVerificationException("Could not verify token", e.getCause());
+        }
+        if (verified)
             return true;
         else
             return false;
