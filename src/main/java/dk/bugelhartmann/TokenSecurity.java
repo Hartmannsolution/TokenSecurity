@@ -14,11 +14,15 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
- * Purpose: to handle tokens
+ * Purpose: To provide JWT-related operations
  * Author: Thomas Hartmann
+ * This class implements the ITokenSecurity interface to provide JWT-related operations.
  */
 public class TokenSecurity implements ITokenSecurity {
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public UserDTO getUserWithRolesFromToken(String token) throws ParseException {
         // Return a user with Set of roles as strings
@@ -31,6 +35,10 @@ public class TokenSecurity implements ITokenSecurity {
                 .collect(Collectors.toSet());
         return new UserDTO(username, rolesSet);
     }
+
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public boolean tokenIsValid(String token, String secret) throws ParseException, TokenVerificationException {
         boolean verified = false;
@@ -46,6 +54,9 @@ public class TokenSecurity implements ITokenSecurity {
             return false;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public boolean tokenNotExpired(String token) throws ParseException{
         if (timeToExpire(token) > 0)
@@ -53,12 +64,19 @@ public class TokenSecurity implements ITokenSecurity {
         else
             return false;
     }
+
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public int timeToExpire(String token) throws ParseException{
         SignedJWT jwt = SignedJWT.parse(token);
         return (int) (jwt.getJWTClaimsSet().getExpirationTime().getTime() - new Date().getTime());
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public String createToken(UserDTO user, String ISSUER, String TOKEN_EXPIRE_TIME, String SECRET_KEY) throws TokenCreationException {
         // https://codecurated.com/blog/introduction-to-jwt-jws-jwe-jwa-jwk/
