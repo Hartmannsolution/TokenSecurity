@@ -34,3 +34,41 @@
 ```
 6. Run `mvn clean install` to get the dependency from JitPack into your project
 
+## JavaDoc
+- JavaDoc is added to all classes and methods
+- Maven plugin is added to generate JavaDoc
+```xml
+<plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-javadoc-plugin</artifactId>
+    <version>3.2.0</version>
+    <executions>
+        <execution>
+            <id>attach-javadocs</id>
+            <goals>
+                <goal>jar</goal>
+            </goals>
+        </execution>
+    </executions>
+</plugin>
+```
+- Version 3.2.0 is a version that is supported by JitPack (3.10.0 is not supported)
+- Now when running `mvn clean install` JavaDoc is generated and can be found in the target folder
+- On JitPack the JavaDoc is also available
+- When using the dependency in your project, you can see the JavaDoc in your IDE (else go to the intellij maven tab and download sources and JavaDoc)
+
+## Api Key
+A new package is added: `apikey`. It contains 2 classes, an enum and an interface:
+1. `ApiKeyDTO.java`
+  - UserDTO
+  - String apiKey
+  - LocalDateTime created
+  - LocalDateTime expires
+  - Status
+2. `IApiKeySecurity.java`
+  - Interface for ApiKeySecurity with 4 methods:
+    - **ApiKeyDTO generateApiKey(UserDTO user, int timeToLive);**
+    - **boolean validateKey(ApiKeyDTO apiKeyDTO, Predicate<ApiKeyDTO> matchInDb);**
+      - Predicate is a functional interface that takes an ApiKeyDTO and returns a boolean to check if the key is in the database and associated with the user.
+3. `ApiKeySecurity.java`
+4. `Status.java` (enum)
