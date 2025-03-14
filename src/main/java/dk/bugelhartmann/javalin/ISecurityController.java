@@ -24,7 +24,7 @@ public interface ISecurityController {
     /**
      * purpose to verify that a token was sent with the request and that it is a valid, non-expired token
      * @return the javalin Handler and the UserDTO from the token is set as an attribute in the request
-     * @throws TokenVerificationException if the token is not valid
+     * throws TokenVerificationException if the token is not valid
      */
     Handler authenticate(); // to verify roles inside token
     /**

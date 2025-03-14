@@ -48,7 +48,7 @@ public interface ITokenSecurity {
      * @param TOKEN_EXPIRE_TIME in milliseconds
      * @param SECRET_KEY 32 characters long
      * @return a JWT token
-     * @throws TokenCreationException if there is an error during creation of the token
+     * throws TokenCreationException if there is an error during creation of the token
      */
     String createToken(UserDTO user, String ISSUER, int TOKEN_EXPIRE_TIME, String SECRET_KEY);
 
