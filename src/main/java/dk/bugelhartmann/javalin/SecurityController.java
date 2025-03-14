@@ -1,11 +1,5 @@
 package dk.bugelhartmann.javalin;
 
-/**
- * Purpose:
- *
- * @author: Thomas Hartmann
- */
-
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
@@ -87,11 +81,6 @@ public class SecurityController implements ISecurityController {
         };
     }
 
-    /**
-     * Purpose: For a user to prove who they are with a valid token
-     *
-     * @return
-     */
     @Override
     public Handler authenticate() {
         ObjectNode returnObject = objectMapper.createObjectNode();
@@ -116,11 +105,6 @@ public class SecurityController implements ISecurityController {
         };
     }
 
-    /**
-     * Purpose: To check if the Authenticated user has the rights to access a protected endpoint
-     *
-     * @return
-     */
     @Override
     public Handler authorize() {
         ObjectNode returnObject = objectMapper.createObjectNode();

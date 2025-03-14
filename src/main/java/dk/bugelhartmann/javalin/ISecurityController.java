@@ -7,18 +7,18 @@ import java.text.ParseException;
 
 public interface ISecurityController {
     /**
-     * @param username credentials
-     * @param password credentials
+     * param username credentials
+     * param password credentials
      * @return the javalin Handler and a token is sent in the response
-     * @throws no exception but sends a 401 if the credentials are wrong
+     * throws no exception but sends a 401 if the credentials are wrong
      */
     Handler login(); // to get a token
     /**
      * @purpose to register a new user with help from the SecurityDAO injected in the constructor
-     * @param username credentials
-     * @param password credentials
+     * param username credentials
+     * param password credentials
      * @return the javalin Handler and a token is sent in the response
-     * @throws no exception but sends a 401 if the credentials are wrong
+     * throws no exception but sends a 401 if the credentials are wrong
      */
     Handler register(); // to get a user
     /**
