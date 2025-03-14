@@ -1,14 +1,12 @@
-package dk.bugelhartmann;
+package dk.bugelhartmann.token;
 
-import com.nimbusds.jose.JOSEException;
+import dk.bugelhartmann.UserDTO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.text.ParseException;
-import java.util.Arrays;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -21,14 +19,14 @@ class ITokenSecurityTest {
     public void setup(){
         UserDTO user = new UserDTO("username", Set.of("Admin", "User"));
         String issuer = "Thomas Hartmann";
-        String expireTime = "1800000"; // 30 min in milliseconds
+        int expireTime = 1800000; // 30 min in milliseconds
         secret = "u8&!pG4sDf7Lq2Xn09BaKs4V6wTpQr!y";
 
         try {
             token = instance.createToken(user, issuer, expireTime, secret);
             System.out.println("TOKEN: "+token);
 
-        } catch(TokenCreationException ex){
+        } catch(RuntimeException ex){
             ex.printStackTrace();
         }
     }
@@ -38,7 +36,7 @@ class ITokenSecurityTest {
     void createToken() {
         UserDTO user = new UserDTO("username", Set.of("Admin", "User"));
         String issuer = "Thomas Hartmann";
-        String expireTime = "1800000";
+        int expireTime = 1800000;
         String key = "u8&!pG4sDfBIq2Xn09BaKs4V6wTpQr!y";
         String token = null;
 
@@ -46,7 +44,7 @@ class ITokenSecurityTest {
             token = instance.createToken(user, issuer, expireTime, key);
             System.out.println("TOKEN: "+token);
 
-        } catch(TokenCreationException ex){
+        } catch(RuntimeException ex){
             ex.printStackTrace();
         }
         assertEquals(token.length(), 201);

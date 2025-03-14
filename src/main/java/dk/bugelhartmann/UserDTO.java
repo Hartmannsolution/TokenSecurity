@@ -18,14 +18,14 @@ import java.util.Set;
 public class UserDTO {
     private String username;
     private String password;
-    Set<String> roles = new HashSet<>();
+    private Set<String> roles = new HashSet<>();
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         UserDTO dto = (UserDTO) o;
-        return Objects.equals(username, dto.username) && Objects.equals(roles, dto.roles);
+        return Objects.equals(username, dto.username) && Objects.equals(roles, dto.getRoles());
     }
 
     /**

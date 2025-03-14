@@ -1,6 +1,6 @@
-package dk.bugelhartmann;
+package dk.bugelhartmann.token;
 
-import com.nimbusds.jose.JOSEException;
+import dk.bugelhartmann.UserDTO;
 
 import java.text.ParseException;
 
@@ -50,6 +50,6 @@ public interface ITokenSecurity {
      * @return a JWT token
      * @throws TokenCreationException if there is an error during creation of the token
      */
-    String createToken(UserDTO user, String ISSUER, String TOKEN_EXPIRE_TIME, String SECRET_KEY) throws TokenCreationException;
+    String createToken(UserDTO user, String ISSUER, int TOKEN_EXPIRE_TIME, String SECRET_KEY);
 
 }

@@ -1,4 +1,4 @@
-package dk.bugelhartmann;
+package dk.bugelhartmann.token;
 
 /**
  * Exception thrown when a JWT token cannot be verified.
