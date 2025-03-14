@@ -1,7 +1,7 @@
 package dk.bugelhartmann;
 
 /**
- * Purpose:
+ * Purpose: To hold messages for security exceptions
  *
  * author: Thomas Hartmann
  */
