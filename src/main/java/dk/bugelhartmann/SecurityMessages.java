@@ -3,7 +3,7 @@ package dk.bugelhartmann;
 /**
  * Purpose:
  *
- * @author: Thomas Hartmann
+ * author: Thomas Hartmann
  */
 public class SecurityMessages {
     public static final String INVALID_TOKEN = "Invalid user or token";
